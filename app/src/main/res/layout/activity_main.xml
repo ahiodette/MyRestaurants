@@ -22,11 +22,11 @@
         android:layout_marginTop="35dp"
         android:text="MyRestaurants"
         android:textColor="@color/colorTextIcons"
-        android:fontFamily="sans-serif-condensed-medium"
+
         android:id="@+id/appNameTextView"
         android:textSize="45sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/" />
+        android:textStyle="bold"/>
+
 
     <EditText
         android:layout_width="wrap_content"

@@ -18,8 +18,7 @@ import java.lang.reflect.Type;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getSimpleName();
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     @BindView(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
     @BindView(R.id.locationEditText) EditText mLocationEditText;
     @BindView(R.id.appNameTextView) TextView mAppNameTextView;
@@ -30,16 +29,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        Typeface caviarFont = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
-        mAppNameTextView.setTypeface(caviarFont);
-        mFindRestaurantsButton.setOnClickListener(new View.OnClickListener(){
+
+        mFindRestaurantsButton.setOnClickListener(this);
+    }
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
-                String location = mLocationEditText.getText().toString();
-                intent.putExtra("location", location);
-                startActivity(intent);
+                if (v==mFindRestaurantsButton){
+                    String location = mLocationEditText.getText().toString();
+                    Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
+                    intent.putExtra("location", location);
+                    startActivity(intent);
+                }
+
             }
-        });
     }
-}

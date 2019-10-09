@@ -23,6 +23,7 @@
         android:text="MyRestaurants"
         android:textColor="@color/colorTextIcons"
         android:fontFamily="sans-serif-condensed-medium"
+        android:id="@+id/appNameTextView"
         android:textSize="45sp"
         android:textStyle="bold"
         app:fontFamily="@font/" />

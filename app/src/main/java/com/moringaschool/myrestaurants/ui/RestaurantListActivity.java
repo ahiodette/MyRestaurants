@@ -1,7 +1,10 @@
 package com.moringaschool.myrestaurants.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,6 +29,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RestaurantListActivity extends AppCompatActivity {
+
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
     private static final String TAG = RestaurantListActivity.class.getSimpleName();
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -76,6 +82,15 @@ public class RestaurantListActivity extends AppCompatActivity {
             }
 
         });
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        if (mRecentAddress != null) {
+            getRestaurants(mRecentAddress);
+        }
+    }
+
+    private void getRestaurants(String mRecentAddress) {
     }
 
     private void showFailureMessage() {

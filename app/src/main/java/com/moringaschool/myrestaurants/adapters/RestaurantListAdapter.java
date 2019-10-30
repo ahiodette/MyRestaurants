@@ -12,21 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.myrestaurants.R;
 import com.moringaschool.myrestaurants.models.Business;
+import com.moringaschool.myrestaurants.models.Restaurant;
 import com.moringaschool.myrestaurants.ui.RestaurantDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder> {
-    private List<Business> mRestaurants;
+    private ArrayList<Restaurant> mRestaurants;
     private Context mContext;
 
-    public RestaurantListAdapter(Context context, List<Business> restaurants) {
+    public RestaurantListAdapter(Context context, ArrayList<Restaurant> restaurants) {
         mContext = context;
         mRestaurants = restaurants;
     }
@@ -78,6 +79,9 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             intent.putExtra("position", itemPosition);
             intent.putExtra("restaurants", Parcels.wrap(mRestaurants));
             mContext.startActivity(intent);
+        }
+
+        public void bindRestaurant(Restaurant restaurant) {
         }
     }
 }
